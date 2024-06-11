@@ -1,14 +1,10 @@
 # Portfolio - Currículo
 ## Descrição
-Este projeto é um aplicativo de portfólio desenvolvido em React Native utilizando o Expo. Ele apresenta informações sobre o desenvolvedor, incluindo detalhes pessoais, 
-formações, habilidades e projetos realizados. A navegação é feita através de um menu que permite alternar entre diferentes seções do portfólio.
+Este projeto é um aplicativo de portfólio desenvolvido em React Native utilizando o Expo. 
+A navegação é feita através de um menu que permite alternar entre diferentes seções do portfólio.
 
 ## Funcionalidades
-Início: Exibe uma imagem e informações básicas sobre o desenvolvedor, além de links para perfis no LinkedIn e GitHub.
-Sobre Mim: Fornece uma descrição detalhada sobre a trajetória e interesses do desenvolvedor.
-Formações: Lista as formações acadêmicas e profissionais do desenvolvedor.
-Habilidades: Mostra uma coleção de habilidades técnicas do desenvolvedor.
-Projetos: Exibe uma galeria de projetos realizados, com descrições e links para os repositórios no GitHub.
+
 
 ## Instalação
 Clone o repositório:
@@ -23,11 +19,13 @@ Inicie o aplicativo:
 
 ## Estrutura do Projeto
 App.js: Componente principal que gerencia a navegação e a exibição das diferentes páginas do portfólio.
-assets/js/AboutMe.js: Componente que renderiza a seção "Sobre Mim".
-assets/js/Education.js: Componente que renderiza a seção "Formações".
-assets/js/Skills.js: Componente que renderiza a seção "Habilidades".
-assets/js/Projects.js: Componente que renderiza a seção "Projetos".
-assets/js/Home.js: Componente que renderiza a seção "Início".
+assets/js/Home.js: 
+assets/js/GeoLocation.js: 
+assets/js/Institutions.js: 
+assets/js/Campaigns.js: 
+assets/js/RegisterCampaigns.js: 
+assets/js/RegisterUserInstitution.js: 
+assets/js/LoggedLandPage.js: 
 
 ## Dependências
 - react: ^17.0.2
