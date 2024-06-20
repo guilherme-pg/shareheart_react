@@ -2,22 +2,21 @@ import React from "react";
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet, TouchableOpacity 
 } from "react-native";
 
 
-const Home = () => {
+
+const Home = ({ navigateTo }) => {
+  const handleNavigation = () => {
+    if (navigateTo) {
+      navigateTo("Cadastro");
+    }
+  };
 
   return (
     <View style={styles.container}>
-      
-      <Text style={styles.info}>Home</Text>
-
-      <Text style={styles.info}>Lista com instituições?</Text>
-
-      <Text style={styles.info}>Lista com campanhas?</Text>
-
-      <Text style={styles.info}> onde colocar os botões de cadastro e login?</Text>
+      <Text style={styles.text}>Bem-vindo ao ShareHeart!</Text>
       
     </View>
   );
@@ -25,8 +24,27 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "red",
-  }
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: "#EABFA7",
+  },
+  text: {
+    fontSize: 24,
+    color: '#fff',
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: "#ffffff",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 16,
+    color: "#5BCEAD",
+    fontWeight: 'bold',
+  },
 });
 
 export default Home;

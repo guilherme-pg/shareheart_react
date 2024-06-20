@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-nati
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import RegisterUserInstitution from "./assets/js/RegisterUserInstitution";
 import LoggedLandPage from "./assets/js/LoggedLandPage";
-import Institutions from "./assets/js/Institutions";
-import Campaigns from "./assets/js/Campaigns " ;
+// import Campaigns from "./assets/js/Campaigns " ;
 import RegisterCampaigns from "./assets/js/RegisterCampaigns";
-import Projects from "./assets/js/Projects";
 import Home from "./assets/js/Home";
+import Cadastro from "./assets/js/Cadastro";
+import GeoLocation from "./assets/js/GeoLocation";
 
 const App = () => {
   const [openMenu, setopenMenu] = useState(false);
@@ -27,7 +27,7 @@ const App = () => {
       case "Início":
         return <Home />;
       case "Cadastro":
-        return <RegisterUserInstitution />;
+        return <Cadastro />;
       case "Land Page":
         return <LoggedLandPage />;
       case "Instituições":
@@ -36,7 +36,7 @@ const App = () => {
         return <Campaigns />;
       case "Cadastro de Campanha":
         return <RegisterCampaigns />;
-      case "Geolocalização":
+      case "GeoLocation":
         return <GeoLocation />;
       case "Projetos":
         return <Projects />;
@@ -49,7 +49,7 @@ const App = () => {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Portfolio</Text>
+        <Text style={styles.title}>ShareHeart</Text>
         <TouchableOpacity onPress={toggleMenu} style={styles.menuIcon}>
           <MaterialCommunityIcons name="menu" size={30} color="black" />
         </TouchableOpacity>
@@ -70,18 +70,12 @@ const App = () => {
           >
             <Text style={styles.menuItemText}>Cadastro</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigateTo("Formações")}
-          >
-            <Text style={styles.menuItemText}>Formações</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.menuItem}
             onPress={() => navigateTo("Instituições")}
           >
             <Text style={styles.menuItemText}>Instituições</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             style={styles.menuItem}
             onPress={() => navigateTo("Campanhas")}
@@ -96,16 +90,11 @@ const App = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigateTo("Geolocalização")}
+            onPress={() => navigateTo("GeoLocation")}
           >
-            <Text style={styles.menuItemText}>Geolocalização</Text>
+            <Text style={styles.menuItemText}>GeoLocation</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigateTo("Projetos")}
-          >
-            <Text style={styles.menuItemText}>Projetos</Text>
-          </TouchableOpacity>
+
         </View>
       )}
 
@@ -126,7 +115,8 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "orange",
+    backgroundColor: "#5BCEAD",
+    flex: 1,
   },
   header: {
     flexDirection: "row",
@@ -135,8 +125,10 @@ const styles = StyleSheet.create({
     padding: 15,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#EABFA7",
     shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
   },
@@ -149,11 +141,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   menu: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#EABFA7",
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
     shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
   },
@@ -170,8 +164,7 @@ const styles = StyleSheet.create({
   content: {
     flexGrow: 1,
     justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
+    alignItems: "center"
   },
   footer: {
     borderTopWidth: 1,
@@ -179,8 +172,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 5,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#EABFA7",
     shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
   },
