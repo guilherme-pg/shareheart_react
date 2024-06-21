@@ -1,15 +1,22 @@
-# Portfolio - Currículo
+# ShareHeart - APP de doações
 ## Descrição
-Este projeto é um aplicativo de portfólio desenvolvido em React Native utilizando o Expo. 
-A navegação é feita através de um menu que permite alternar entre diferentes seções do portfólio.
+Este projeto é um aplicativo de doações desenvolvido em React Native utilizando o Expo.
+A navegação é feita através de um menu que permite alternar entre diferentes seções do APP e suas funcionalidades.
+Equipe:
+Bárbara Leimig
+Guilherme Guimarães
+Jéssica Espíndola
+Luiz Pinheiro
+Mariana Pedreira
+Naeldy Godoy
 
 ## Funcionalidades
 
 
 ## Instalação
 Clone o repositório:
-`git clone https://github.com/BarbaraLeimig/portfolio-app.git
-cd portfolio-app`
+`git clone https://github.com/guilherme-pg/shareheart_react.git
+cd shareheart_react`
 
 Instale as dependências:
 `npm install`
