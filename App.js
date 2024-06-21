@@ -29,7 +29,7 @@ const App = () => {
       case "Início":
         return <Home navigateTo={navigateTo} />;
       case "Cadastro":
-        return <Cadastro />;
+        return <Cadastro navigateTo={navigateTo} />;
       case "Land Page":
         return <LoggedLandPage />;
       case "Instituições":
@@ -113,13 +113,9 @@ const App = () => {
 
       {/* Footer */}
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Cadastro")}>
-          <MaterialCommunityIcons name="badge-account-horizontal" size={46} color="black" />
-        </TouchableOpacity>
         <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Início")}>
           <MaterialCommunityIcons name="home-circle" size={46} color="black" />
         </TouchableOpacity>
-        
       </View>
     </View>
   );
@@ -200,8 +196,7 @@ const styles = StyleSheet.create({
   footer: {
     borderTopWidth: 1,
     borderTopColor: "#ddd",
-    flexDirection: 'row',
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     padding: 5,
     backgroundColor: "#EABFA7",
