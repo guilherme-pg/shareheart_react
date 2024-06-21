@@ -61,10 +61,17 @@ const Cadastro = ({ navigateTo }) => {
             style={styles.input}
             placeholder="CPF"
           />
-          <TextInput
+          <TextInputMask
+            type={'cel-phone'}
+            options={{
+              maskType: 'BRL',
+              withDDD: true,
+              dddMask: '(99) '
+            }}
+            value={telephone}
+            onChangeText={(text) => setTelephone(text)}
             style={styles.input}
             placeholder="Telefone"
-            onChangeText={(text) => setTelephone(text)}
           />
           <TextInput
             style={styles.input}
