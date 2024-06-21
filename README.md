@@ -25,7 +25,7 @@ Inicie o aplicativo:
 `npx expo start`
 
 ## Estrutura do Projeto
-App.js: Componente principal que gerencia a navegação e a exibição das diferentes páginas do portfólio.
+App.js: Componente principal que gerencia a navegação e a exibição das diferentes páginas do app.
 assets/js/Home.js: 
 assets/js/GeoLocation.js: 
 assets/js/Institutions.js: 
