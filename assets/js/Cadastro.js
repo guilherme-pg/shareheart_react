@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
+import { TextInputMask } from 'react-native-masked-text';
 
 const Cadastro = ({ navigateTo }) => {
   const [name, setName] = useState('');
@@ -53,10 +54,12 @@ const Cadastro = ({ navigateTo }) => {
             placeholder="Nome"
             onChangeText={(text) => setName(text)}
           />
-          <TextInput
+          <TextInputMask
+            type={'cpf'}
+            value={cpf}
+            onChangeText={(text) => setCpf(text)}
             style={styles.input}
             placeholder="CPF"
-            onChangeText={(text) => setCpf(text)}
           />
           <TextInput
             style={styles.input}
