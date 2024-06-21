@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import ShapeLeft from './assets/img/shape-left-desktop.png';
+import ShareHeartLogo from './assets/img/shareHeartLogo-simbolo.png';
 import RegisterUserInstitution from "./assets/js/RegisterUserInstitution";
 import LoggedLandPage from "./assets/js/LoggedLandPage";
 // import Campaigns from "./assets/js/Campaigns " ;
@@ -25,7 +27,7 @@ const App = () => {
   const renderPage = () => {
     switch (currentPage) {
       case "Início":
-        return <Home />;
+        return <Home navigateTo={navigateTo} />;
       case "Cadastro":
         return <Cadastro />;
       case "Land Page":
@@ -49,9 +51,15 @@ const App = () => {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>ShareHeart</Text>
+        <Image source={ShapeLeft} style={styles.ShapeLeft} ></Image>
+        <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Início")}><View style={styles.headerContainerLogo}>
+          <Image source={ShareHeartLogo} style={styles.ShareHeartLogoHeader}></Image>
+          <Text style={styles.title}>ShareHeart</Text>
+        </View>
+        </TouchableOpacity>
+        
         <TouchableOpacity onPress={toggleMenu} style={styles.menuIcon}>
-          <MaterialCommunityIcons name="menu" size={30} color="black" />
+          <MaterialCommunityIcons name="menu" size={35} color="black" />
         </TouchableOpacity>
       </View>
 
@@ -105,9 +113,13 @@ const App = () => {
 
       {/* Footer */}
       <View style={styles.footer}>
+        <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Cadastro")}>
+          <MaterialCommunityIcons name="badge-account-horizontal" size={46} color="black" />
+        </TouchableOpacity>
         <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Início")}>
           <MaterialCommunityIcons name="home-circle" size={46} color="black" />
         </TouchableOpacity>
+        
       </View>
     </View>
   );
@@ -123,19 +135,37 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
-    backgroundColor: "#EABFA7",
+    
+    
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
   },
+  headerContainerLogo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  ShareHeartLogoHeader: {
+    width: 60,
+    resizeMode: 'contain',
+  },
+  ShapeLeft: {
+    width: 400,
+    top: -280,
+    
+    position: 'absolute',
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#333",
+    color: 'red',
+    position: 'relative',
+    color: 'black',
+    left: 0,
+    top: 0,
   },
   menuIcon: {
     padding: 10,
@@ -147,9 +177,10 @@ const styles = StyleSheet.create({
     borderBottomColor: "#ddd",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.6,
     shadowRadius: 5,
     elevation: 3,
+    
   },
   menuItem: {
     paddingVertical: 10,
@@ -169,7 +200,8 @@ const styles = StyleSheet.create({
   footer: {
     borderTopWidth: 1,
     borderTopColor: "#ddd",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: "space-between",
     alignItems: "center",
     padding: 5,
     backgroundColor: "#EABFA7",
