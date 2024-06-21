@@ -73,10 +73,15 @@ const Cadastro = ({ navigateTo }) => {
             style={styles.input}
             placeholder="Telefone"
           />
-          <TextInput
+          <TextInputMask
+            type={'datetime'}
+            options={{
+              format: 'DD/MM/YYYY'
+            }}
+            value={birthday}
+            onChangeText={(text) => setBirthday(text)}
             style={styles.input}
             placeholder="Data de Nascimento"
-            onChangeText={(text) => setBirthday(text)}
           />
           <TextInput
             style={styles.input}
