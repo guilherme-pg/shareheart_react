@@ -113,6 +113,9 @@ const App = () => {
 
       {/* Footer */}
       <View style={styles.footer}>
+        <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Cadastro")}>
+          <MaterialCommunityIcons name="badge-account-horizontal" size={46} color="black" />
+        </TouchableOpacity>
         <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Início")}>
           <MaterialCommunityIcons name="home-circle" size={46} color="black" />
         </TouchableOpacity>
@@ -196,6 +199,7 @@ const styles = StyleSheet.create({
   footer: {
     borderTopWidth: 1,
     borderTopColor: "#ddd",
+    flexDirection: 'row',
     justifyContent: "center",
     alignItems: "center",
     padding: 5,
