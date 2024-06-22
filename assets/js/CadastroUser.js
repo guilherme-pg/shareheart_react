@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
 import { TextInputMask } from 'react-native-masked-text';
+// import LoggedLandPage from "./assets/js/LoggedLandPage";
 
-const Cadastro = ({ navigateTo }) => {
+
+const YOUR_IP = "192.168.0.162";
+
+
+const CadastroUser = ({ navigateTo }) => {
   const [name, setName] = useState('');
   const [cpf, setCpf] = useState('');
   const [telephone, setTelephone] = useState('');
@@ -12,6 +17,8 @@ const Cadastro = ({ navigateTo }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   const handleCadastro = () => {
     const newUser = {
@@ -23,22 +30,26 @@ const Cadastro = ({ navigateTo }) => {
       email: email,
       password: password
     };
+    
 
-    axios.post('http://your-server-url/api/users/add', newUser)
+    axios.post(`http://${YOUR_IP}:3000/user/add`, newUser)
       .then(res => {
-        console.log(res.data);
-        // Exibir mensagem de sucesso
-        setSuccessMessage('Cadastro realizado com sucesso! Redirecionando para a página de login...');
-        // Redirecionar para a página de login após 3 segundos
-        setTimeout(() => {
-          if (navigateTo) {
-            navigateTo("Login");
-          }
-        }, 3000);
+        // Handle response
       })
-      .catch(err => {
-        console.log(err);
-        // Aqui você pode lidar com erros, como exibir uma mensagem de erro ao usuário
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
       });
   };
 
@@ -154,4 +165,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Cadastro;
+export default CadastroUser;

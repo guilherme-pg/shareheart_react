@@ -2,7 +2,10 @@ const express = require('express');
 const app = express();
 const userRoutes = express.Router();
 
+
 let User = require('../model/User');
+
+
 
 // api to add user
 userRoutes.route('/add').post((req, res) => {
@@ -16,6 +19,8 @@ userRoutes.route('/add').post((req, res) => {
         });
 });
 
+
+
 // api to get all users
 userRoutes.route('/').get((req, res) => {
     User.find()
@@ -26,6 +31,8 @@ userRoutes.route('/').get((req, res) => {
             res.status(400).send({ 'status': 'failure', 'message': 'Something went wrong' });
         });
 });
+
+
 
 // api to get user by id
 userRoutes.route('/:id').get((req, res) => {
@@ -38,6 +45,8 @@ userRoutes.route('/:id').get((req, res) => {
             res.status(400).send({'status': 'failure', 'mssg': 'Something went wrong'});
         });
 });
+
+
 
 // api to update user by ID
 userRoutes.route('/update/:id').put((req, res) => {
@@ -62,6 +71,8 @@ userRoutes.route('/update/:id').put((req, res) => {
         });
 });
 
+
+
 // api for delete a user
 userRoutes.route('/delete/:id').delete((req, res) => {
     let id = req.params.id;
@@ -73,5 +84,7 @@ userRoutes.route('/delete/:id').delete((req, res) => {
             res.status(400).send({'status': 'failure','mssg': 'Something went wrong'});
         });
 });
-  
+
+
+
 module.exports = userRoutes;

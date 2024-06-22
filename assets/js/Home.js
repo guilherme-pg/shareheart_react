@@ -6,7 +6,7 @@ const Home = ({ navigateTo }) => {
   
   const handleNavigation = () => {
     if (navigateTo) {
-      navigateTo("Cadastro");
+      navigateTo("CadastroUser");
     }
   };
 
@@ -19,7 +19,7 @@ const Home = ({ navigateTo }) => {
 
       <TouchableOpacity
         style={styles.menuItem}
-        onPress={() => handleNavigation("Cadastro")}
+        onPress={() => handleNavigation("CadastroUser")}
       >
         <Text style={styles.menuItemText}>Cadastre-se agora</Text>
       </TouchableOpacity>

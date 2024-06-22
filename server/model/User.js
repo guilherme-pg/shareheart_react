@@ -5,33 +5,32 @@ let User = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     cpf: {
       type: String,
       required: true,
-      unique: true,
+      unique: true
     },
     telephone: {
-      type: Number,
-      unique: true,
+      type: String,
+      required: true
     },
     birthday: {
       type: String,
-      required: true,
+      required: true
     },
     address: {
         type: String,
-        required: true,
+        required: true
     },
     email: {
       type: String,
-      required: true,
-      unique: true,
+      required: true
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
   },
   {

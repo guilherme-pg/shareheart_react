@@ -3,12 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from "rea
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import ShapeLeft from './assets/img/shape-left-desktop.png';
 import ShareHeartLogo from './assets/img/shareHeartLogo-simbolo.png';
-import RegisterUserInstitution from "./assets/js/RegisterUserInstitution";
-import LoggedLandPage from "./assets/js/LoggedLandPage";
-// import Campaigns from "./assets/js/Campaigns " ;
-import RegisterCampaigns from "./assets/js/RegisterCampaigns";
 import Home from "./assets/js/Home";
-import Cadastro from "./assets/js/Cadastro";
+import CadastroUser from "./assets/js/CadastroUser";
 import GeoLocation from "./assets/js/GeoLocation";
 
 const App = () => {
@@ -28,20 +24,12 @@ const App = () => {
     switch (currentPage) {
       case "Início":
         return <Home navigateTo={navigateTo} />;
-      case "Cadastro":
-        return <Cadastro navigateTo={navigateTo} />;
-      case "Land Page":
-        return <LoggedLandPage />;
+      case "CadastroUser":
+        return <CadastroUser navigateTo={navigateTo} />;
       case "Instituições":
         return <Institutions />;
-      case "Campanhas":
-        return <Campaigns />;
-      case "Cadastro de Campanha":
-        return <RegisterCampaigns />;
       case "GeoLocation":
         return <GeoLocation />;
-      case "Projetos":
-        return <Projects />;
       default:
         return null;
     }
@@ -72,30 +60,21 @@ const App = () => {
           >
             <Text style={styles.menuItemText}>Início</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigateTo("Cadastro")}
+            onPress={() => navigateTo("CadastroUser")}
           >
-            <Text style={styles.menuItemText}>Cadastro</Text>
+            <Text style={styles.menuItemText}>Cadastro do Usuário</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity
+
+          <TouchableOpacity
             style={styles.menuItem}
             onPress={() => navigateTo("Instituições")}
           >
             <Text style={styles.menuItemText}>Instituições</Text>
-          </TouchableOpacity> */}
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigateTo("Campanhas")}
-          >
-            <Text style={styles.menuItemText}>Campanhas</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => navigateTo("Cadastro de Campanha")}
-          >
-            <Text style={styles.menuItemText}>Cadastro de Campanha</Text>
-          </TouchableOpacity>
+          
           <TouchableOpacity
             style={styles.menuItem}
             onPress={() => navigateTo("GeoLocation")}
@@ -113,7 +92,7 @@ const App = () => {
 
       {/* Footer */}
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Cadastro")}>
+        <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("CadastroUser")}>
           <MaterialCommunityIcons name="badge-account-horizontal" size={46} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerIcon} onPress={() => navigateTo("Início")}>

@@ -2,13 +2,14 @@
 ## Descrição
 Este projeto é um aplicativo de doações desenvolvido em React Native utilizando o Expo.
 A navegação é feita através de um menu que permite alternar entre diferentes seções do APP e suas funcionalidades.
-Equipe:
-Bárbara Leimig
-Guilherme Guimarães
-Jéssica Espíndola
-Luiz Pinheiro
-Mariana Pedreira
-Naeldy Godoy
+
+### Equipe
+* Bárbara Leimig
+* Guilherme Guimarães
+* Jéssica Espíndola
+* Luiz Pinheiro
+* Mariana Pedreira
+* Naeldy Godoy
 
 ## Funcionalidades
 
