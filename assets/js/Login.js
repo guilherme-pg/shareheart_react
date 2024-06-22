@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
 
+
+
+// const YOUR_IP = ; // PRECISA MUDAR E COLOCAR PARA VARIÁVEL DE AMBIENTE
+
+
+
 const Login = ({ navigateTo }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
 
   const handleLogin = () => {
     const userCredentials = {
@@ -13,13 +20,14 @@ const Login = ({ navigateTo }) => {
       password: password
     };
 
-    axios.post('http://your-server-url/api/users/login', userCredentials)
+
+    axios.post(`http://${YOUR_IP}:3000/user/login`, userCredentials)
       .then(res => {
         console.log(res.data);
-        if (res.data.success) {
-          // Redirecionar para a página protegida ou inicial após o login
+        if (res.data.status === 'success') {
+          // Redirecionar para a página após o login
           if (navigateTo) {
-            navigateTo("ProtectedPage");
+            navigateTo("LoggedLandPage");
           }
         } else {
           // Exibir mensagem de erro
@@ -32,6 +40,7 @@ const Login = ({ navigateTo }) => {
         setErrorMessage('Erro ao realizar login. Por favor, tente novamente.');
       });
   };
+
 
   return (
     <View style={styles.container}>
@@ -62,6 +71,8 @@ const Login = ({ navigateTo }) => {
   );
 };
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -84,6 +95,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#ccc',
+    width: 250,
   },
   button: {
     backgroundColor: '#ffffff',
@@ -104,5 +116,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
+
+
 
 export default Login;

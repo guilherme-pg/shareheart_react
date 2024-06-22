@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
 import { TextInputMask } from 'react-native-masked-text';
-// import LoggedLandPage from "./assets/js/LoggedLandPage";
 
 
-const YOUR_IP = "192.168.0.162";
+
+// const YOUR_IP = ; // PRECISA MUDAR E COLOCAR PARA VARIÁVEL DE AMBIENTE
+
 
 
 const CadastroUser = ({ navigateTo }) => {
@@ -34,7 +35,13 @@ const CadastroUser = ({ navigateTo }) => {
 
     axios.post(`http://${YOUR_IP}:3000/user/add`, newUser)
       .then(res => {
-        // Handle response
+        setSuccessMessage('Cadastro realizado com sucesso! Redirecionando para a página de login...');
+        // Redirecionar para a página de login após 3 segundos
+        setTimeout(() => {
+          if (navigateTo) {
+            navigateTo("LoggedLandPage");
+          }
+        }, 3000);
       })
       .catch(error => {
         if (error.response) {

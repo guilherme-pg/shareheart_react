@@ -7,7 +7,7 @@ let User = require('../model/User');
 
 
 
-// api to add user
+// api to ADD user
 userRoutes.route('/add').post((req, res) => {
     let user = new User(req.body);
     user.save()
@@ -21,7 +21,7 @@ userRoutes.route('/add').post((req, res) => {
 
 
 
-// api to get all users
+// api to GET ALL users
 userRoutes.route('/').get((req, res) => {
     User.find()
         .then(users => {
@@ -34,7 +34,7 @@ userRoutes.route('/').get((req, res) => {
 
 
 
-// api to get user by id
+// api to GET user BY ID
 userRoutes.route('/:id').get((req, res) => {
     let id = req.params.id;
     User.findById(id)
@@ -48,7 +48,7 @@ userRoutes.route('/:id').get((req, res) => {
 
 
 
-// api to update user by ID
+// api to UPDATE user by ID
 userRoutes.route('/update/:id').put((req, res) => {
     let id = req.params.id;
     User.findById(id)
@@ -73,7 +73,7 @@ userRoutes.route('/update/:id').put((req, res) => {
 
 
 
-// api for delete a user
+// api for DELETE a user
 userRoutes.route('/delete/:id').delete((req, res) => {
     let id = req.params.id;
     User.findOneAndDelete(id)
@@ -84,6 +84,37 @@ userRoutes.route('/delete/:id').delete((req, res) => {
             res.status(400).send({'status': 'failure','mssg': 'Something went wrong'});
         });
 });
+
+
+
+// api to LOGIN a user
+userRoutes.route('/login').post((req, res) => {
+
+    // Extrai o email e a senha do corpo da requisição
+    const { email, password } = req.body;
+
+    // Busca um usuário no banco de dados com o email fornecido
+    User.findOne({ email: email })
+        .then(user => {
+            // Se nenhum usuário for encontrado, retorna um erro de credenciais inválidas
+            if (!user) {
+                return res.status(401).json({ 'status': 'failure', 'mssg': 'Invalid credentials' });
+            }
+
+            // Compara a senha fornecida com a senha armazenada no banco de dados
+            if (password === user.password) {
+                return res.status(200).json({ 'status': 'success', 'mssg': 'Login successful' });
+            } else {
+                return res.status(401).json({ 'status': 'failure', 'mssg': 'Invalid credentials' });
+            }
+        })
+        // Se ocorrer um erro ao buscar o usuário no banco de dados, retorna um erro de servidor
+        .catch(err => {
+            res.status(500).json({ 'status': 'failure', 'mssg': 'Server error' });
+        });
+});
+
+
 
 
 

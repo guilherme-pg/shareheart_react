@@ -1,19 +1,82 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+
+
 
 const LoggedLandPage = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>LoggedLandPage</Text>
-      
+      <View style={styles.container_level_2}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => handleNavigation("CadastroUser")}>
+          <Text style={styles.menuItemText}>Cadastrar Doação</Text>
+        </TouchableOpacity>
+      </View>
+
+
+      <View style={styles.container_level_2}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => handleNavigation("Login")}>
+          <Text style={styles.menuItemText}>Doações Cadastradas</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
+
+
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "blue",
-  }
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: "#EABFA7",
+  },
+  container_level_2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: "red",
+    // margin: 10,
+  },
+  NomeShareHeart: {
+    width: 200,
+    resizeMode: 'contain',
+  },
+  text: {
+    fontSize: 24,
+    color: '#fff',
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: "#ffffff",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 16,
+    color: "#5BCEAD",
+    fontWeight: 'bold',
+  },
+  menuItem: {
+    backgroundColor: "#ffffff",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 200,
+  },
+  menuItemText: {
+    fontSize: 16,
+    color: "#5BCEAD",
+    fontWeight: 'bold',
+  },
 });
 
 export default LoggedLandPage;

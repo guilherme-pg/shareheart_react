@@ -6,34 +6,45 @@ import ShareHeartLogo from './assets/img/shareHeartLogo-simbolo.png';
 import Home from "./assets/js/Home";
 import CadastroUser from "./assets/js/CadastroUser";
 import GeoLocation from "./assets/js/GeoLocation";
+import Login from "./assets/js/Login";
+import LoggedLandPage from "./assets/js/LoggedLandPage";
+
 
 const App = () => {
   const [openMenu, setopenMenu] = useState(false);
   const [currentPage, setcurrentPage] = useState("Início");
 
+
   const toggleMenu = () => {
     setopenMenu(!openMenu);
   };
+
 
   const navigateTo = (page) => {
     setcurrentPage(page);
     setopenMenu(false);
   };
 
+
   const renderPage = () => {
     switch (currentPage) {
       case "Início":
         return <Home navigateTo={navigateTo} />;
+      case "Login":
+        return <Login navigateTo={navigateTo} />;
       case "CadastroUser":
         return <CadastroUser navigateTo={navigateTo} />;
       case "Instituições":
         return <Institutions />;
       case "GeoLocation":
         return <GeoLocation />;
+      case "LoggedLandPage":
+        return <LoggedLandPage />;
       default:
         return null;
     }
   };
+
 
   return (
     <View style={styles.container}>
@@ -51,44 +62,49 @@ const App = () => {
         </TouchableOpacity>
       </View>
 
+
       {/* Menu */}
       {openMenu && (
         <View style={styles.menu}>
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigateTo("Início")}
-          >
+            onPress={() => navigateTo("Início")}>
             <Text style={styles.menuItemText}>Início</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigateTo("CadastroUser")}
-          >
+            onPress={() => navigateTo("Login")}>
+            <Text style={styles.menuItemText}>Login</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => navigateTo("CadastroUser")}>
             <Text style={styles.menuItemText}>Cadastro do Usuário</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigateTo("Instituições")}
-          >
+            onPress={() => navigateTo("Instituições")}>
             <Text style={styles.menuItemText}>Instituições</Text>
           </TouchableOpacity>
           
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigateTo("GeoLocation")}
-          >
+            onPress={() => navigateTo("GeoLocation")}>
             <Text style={styles.menuItemText}>GeoLocation</Text>
           </TouchableOpacity>
 
         </View>
       )}
 
+
       {/* Content */}
       <ScrollView contentContainerStyle={styles.content}>
         {renderPage()}
       </ScrollView>
+
 
       {/* Footer */}
       <View style={styles.footer}>
@@ -102,6 +118,8 @@ const App = () => {
     </View>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -158,7 +176,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.6,
     shadowRadius: 5,
     elevation: 3,
-    
   },
   menuItem: {
     paddingVertical: 10,
@@ -193,5 +210,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+
+
 
 export default App;
