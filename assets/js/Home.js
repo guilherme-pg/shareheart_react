@@ -8,9 +8,7 @@ const Home = ({ navigateTo }) => {
   
 
   const handleNavigation = (page) => {
-    console.log("navigateTo HOME:    ", navigateTo)
     if (navigateTo) {
-      console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
       navigateTo(page);
     }
   };

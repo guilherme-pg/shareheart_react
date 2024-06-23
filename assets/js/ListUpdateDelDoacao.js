@@ -17,7 +17,11 @@ const ListUpdateDelDoacao = () => {
     // Função para buscar doações da API
     const fetchDonations = async () => {
       try {
-        const response = await fetch(`http://${YOUR_IP}:3000/donations`);
+        const response = await fetch(`http://${YOUR_IP}:3000/donation/`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
         if (data.status === 'success') {
           setDonations(data.donations);
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     alignItems: 'center',
-    width: '90%',
+    width: 300,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

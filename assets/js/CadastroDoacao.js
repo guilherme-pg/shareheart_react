@@ -59,7 +59,6 @@ const CadastroDoacao = ({ navigateTo }) => {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.titleCadastro}>Faça seu cadastro para começar a doar!</Text>
       {successMessage ? (
         <Text style={styles.successMessage}>{successMessage}</Text>
       ) : (
@@ -121,6 +120,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#ccc',
+    width: 250
   },
   button: {
     backgroundColor: '#ffffff',
