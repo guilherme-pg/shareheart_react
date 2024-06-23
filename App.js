@@ -8,24 +8,30 @@ import CadastroUser from "./assets/js/CadastroUser";
 import GeoLocation from "./assets/js/GeoLocation";
 import Login from "./assets/js/Login";
 import LoggedLandPage from "./assets/js/LoggedLandPage";
+import ListUpdateDelDoacao from "./assets/js/ListUpdateDelDoacao";
+import CadastroDoacao from "./assets/js/CadastroDoacao";
 
 
 const App = () => {
+
+  // Definição de estados com useState
   const [openMenu, setopenMenu] = useState(false);
   const [currentPage, setcurrentPage] = useState("Início");
 
 
+  // Função para alternar a visibilidade do menu
   const toggleMenu = () => {
     setopenMenu(!openMenu);
   };
 
 
+  // Função para navegar para uma página específica
   const navigateTo = (page) => {
     setcurrentPage(page);
     setopenMenu(false);
   };
 
-
+  // Função para renderizar a página atual com base no estado currentPage
   const renderPage = () => {
     switch (currentPage) {
       case "Início":
@@ -34,12 +40,16 @@ const App = () => {
         return <Login navigateTo={navigateTo} />;
       case "CadastroUser":
         return <CadastroUser navigateTo={navigateTo} />;
+      case "ListUpdateDelDoacao":
+        return <ListUpdateDelDoacao navigateTo={navigateTo} />;
+      case "CadastroDoacao":
+        return <CadastroDoacao navigateTo={navigateTo} />;
       case "Instituições":
-        return <Institutions />;
+        return <Institutions navigateTo={navigateTo} />;
       case "GeoLocation":
-        return <GeoLocation />;
+        return <GeoLocation navigateTo={navigateTo} />;
       case "LoggedLandPage":
-        return <LoggedLandPage />;
+        return <LoggedLandPage navigateTo={navigateTo} />;
       default:
         return null;
     }
@@ -86,7 +96,7 @@ const App = () => {
 
           <TouchableOpacity
             style={styles.menuItem}
-            onPress={() => navigateTo("Instituições")}>
+            onPress={() => navigateTo("Institutions")}>
             <Text style={styles.menuItemText}>Instituições</Text>
           </TouchableOpacity>
           

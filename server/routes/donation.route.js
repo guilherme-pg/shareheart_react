@@ -2,9 +2,13 @@ const express = require('express');
 const app = express();
 const donationRoutes = express.Router();
 
+
+
 let Donation = require('../model/Donation');
 
-// api to add a donation
+
+
+// api to ADD a donation
 donationRoutes.route('/add').post((req, res) => {
     let donation = new Donation(req.body);
     donation.save()
@@ -16,7 +20,9 @@ donationRoutes.route('/add').post((req, res) => {
         });
 });
 
-// api to get all donations
+
+
+// api to GET ALL donations
 donationRoutes.route('/').get((req, res) => {
     Donation.find()
         .then(donations => {
@@ -27,7 +33,9 @@ donationRoutes.route('/').get((req, res) => {
         });
 });
 
-// api to get donation by id
+
+
+// api to GET donation BY ID
 donationRoutes.route('/:id').get((req, res) => {
     let id = req.params.id;
     Donation.findById(id)
@@ -39,11 +47,14 @@ donationRoutes.route('/:id').get((req, res) => {
         });
 });
 
-// api to update a donation by ID
+
+
+// api to UODATE a donation by ID
 donationRoutes.route('/update/:id').put((req, res) => {
     let id = req.params.id;
     Donation.findById(id)
         .then(donation => {
+            donation.email = req.body.email;
             donation.item = req.body.item;
             donation.hour = req.body.hour;
             donation.location = req.body.location;
@@ -58,7 +69,9 @@ donationRoutes.route('/update/:id').put((req, res) => {
         });
 });
 
-// api for delete a donation
+
+
+// api for DELETE a donation
 donationRoutes.route('/delete/:id').delete((req, res) => {
     let id = req.params.id;
     Donation.findOneAndDelete(id)
@@ -70,4 +83,6 @@ donationRoutes.route('/delete/:id').delete((req, res) => {
         });
 });
   
+
+
 module.exports = donationRoutes;

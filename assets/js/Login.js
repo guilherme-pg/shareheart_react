@@ -4,11 +4,13 @@ import axios from 'axios';
 
 
 
-// const YOUR_IP = ; // PRECISA MUDAR E COLOCAR PARA VARIÁVEL DE AMBIENTE
+const YOUR_IP = "192.168.0.162"; // PRECISA MUDAR E COLOCAR PARA VARIÁVEL DE AMBIENTE
 
 
 
 const Login = ({ navigateTo }) => {
+
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');

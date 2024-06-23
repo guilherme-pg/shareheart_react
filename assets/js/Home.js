@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 import NomeShareHeart from "../img/shareheart-logotipo-white.png";
 
 
@@ -8,7 +8,9 @@ const Home = ({ navigateTo }) => {
   
 
   const handleNavigation = (page) => {
+    console.log("navigateTo HOME:    ", navigateTo)
     if (navigateTo) {
+      console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
       navigateTo(page);
     }
   };
@@ -24,8 +26,7 @@ const Home = ({ navigateTo }) => {
 
         <TouchableOpacity
           style={styles.menuItem}
-          onPress={() => handleNavigation("CadastroUser")}
-        >
+          onPress={() => handleNavigation("CadastroUser")}>
           <Text style={styles.menuItemText}>Cadastre-se agora</Text>
         </TouchableOpacity>
       </View>
@@ -36,8 +37,7 @@ const Home = ({ navigateTo }) => {
 
         <TouchableOpacity
           style={styles.menuItem}
-          onPress={() => handleNavigation("Login")}
-        >
+          onPress={() => handleNavigation("Login")}>
           <Text style={styles.menuItemText}>Login</Text>
         </TouchableOpacity>
       </View>

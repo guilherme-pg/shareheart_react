@@ -1,27 +1,46 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
 
 
-const LoggedLandPage = () => {
+const LoggedLandPage = ({ navigateTo }) => {
+
+
+  const handleNavigation = (page) => {
+    if (navigateTo) {
+      navigateTo(page);
+    }
+  };
+
+
   return (
     <View style={styles.container}>
       <View style={styles.container_level_2}>
+
         <TouchableOpacity
           style={styles.menuItem}
-          onPress={() => handleNavigation("CadastroUser")}>
+          onPress={() => handleNavigation("CadastroDoacao")}>
           <Text style={styles.menuItemText}>Cadastrar Doação</Text>
         </TouchableOpacity>
       </View>
 
-
       <View style={styles.container_level_2}>
         <TouchableOpacity
           style={styles.menuItem}
-          onPress={() => handleNavigation("Login")}>
+          onPress={() => handleNavigation("ListUpdateDelDoacao")}>
           <Text style={styles.menuItemText}>Doações Cadastradas</Text>
         </TouchableOpacity>
       </View>
+
+      {/* 
+      <View style={styles.container_level_2}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => handleNavigation("ConfigUser")}>
+          <Text style={styles.menuItemText}>Configurações de Usuário</Text>
+        </TouchableOpacity>
+      </View> 
+      */}
     </View>
   );
 };
