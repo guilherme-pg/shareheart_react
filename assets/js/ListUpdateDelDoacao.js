@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 
 
 
@@ -34,15 +34,57 @@ const ListUpdateDelDoacao = () => {
     fetchDonations();
   }, []);
 
+
+
   const handleUpdate = (id) => {
     // Lógica para atualizar a doação
     console.log('Atualizar doação:', id);
   };
 
-  const handleDelete = (id) => {
-    // Lógica para deletar a doação
-    console.log('Deletar doação:', id);
+
+
+  const handleDelete = async (id) => {
+    // Função para deletar a doação
+    console.log("IIIIIIIIIIIIIIIIDDDDDDDDDDDDDD:  ", id)
+    try {
+      const response = await fetch(`http://${YOUR_IP}:3000/donation/delete/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      if (data.status === 'success') {
+        setDonations(donations.filter(d => d._id !== id));
+        Alert.alert('Sucesso', 'Doação deletada com sucesso');
+      } else {
+        Alert.alert('Erro', 'Falha ao deletar doação');
+      }
+    } catch (error) {
+      console.error('Erro ao deletar doação:', error);
+      Alert.alert('Erro', 'Ocorreu um erro ao deletar a doação');
+    }
   };
+
+
+  const confirmDelete = (id) => {
+    Alert.alert(
+      "Confirmação de Deleção",
+      "Você quer mesmo deletar esta Doação?",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel"
+        },
+        {
+          text: "Sim",
+          onPress: () => handleDelete(id)
+        }
+      ],
+      { cancelable: true }
+    );
+  };
+
 
 
   return (
@@ -62,7 +104,7 @@ const ListUpdateDelDoacao = () => {
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleDelete(donation._id)}>
+            onPress={() => confirmDelete(donation._id)}>
             <Text style={styles.buttonText}>Delete</Text>
           </TouchableOpacity>
         </View>

@@ -49,7 +49,7 @@ donationRoutes.route('/:id').get((req, res) => {
 
 
 
-// api to UODATE a donation by ID
+// api to UPDATE a donation by ID
 donationRoutes.route('/update/:id').put((req, res) => {
     let id = req.params.id;
     Donation.findById(id)
